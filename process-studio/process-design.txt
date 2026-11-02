@@ -1,0 +1,25 @@
+Analyze a Retail Bank Complaints Management process.
+
+Current Process:
+
+Customer Complaint
+→ Manual Triage
+→ Evidence Collection
+→ Policy Review
+→ Draft Response
+→ Closure
+
+Pain Points:
+- 50,000 complaints per month
+- 7-10 day resolution time
+- 40% routing errors
+- Manual investigation
+
+Generate:
+
+1. As-Is Process
+2. Bottlenecks
+3. To-Be Process
+4. STP Criteria
+5. Retry, Timeout and Fallback
+6. Benefits

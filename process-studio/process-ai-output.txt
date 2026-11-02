@@ -1,0 +1,196 @@
+1. As-Is Process
+
+Current complaint handling flow in the retail bank appears to operate as a largely manual case-management workflow1. Customer submits complaint
+   - Channels: branch, call center, email, web form, mobile app, regulator referral
+   - data may be incomplete or unstructured
+
+2. Manual triage
+   - Operations staff read complaint
+   - Identify complaint category, severity, product, customer
+   - Assign to correct queue/team
+
+3. Evidence collection
+   - Staff gather transaction history, call recordings, account activity, KYC data, prior interactions, policy documents
+   - Often requires accessing multiple systems manually
+
+4. Policy and regulatory review
+   - Reviewer checks complaint against internal policies, product terms, compliance obligations, and regional regulations
+
+5. Draft response
+   - Investigator prepares customer response
+   - Response reviewed by supervisor/compliance where required
+
+6. Closure
+  /compliance where required
+
+6. Closure
+   - Case resolved, customer notified
+   - Outcome logged for audit and reporting
+
+2. Bottlenecks
+
+Key operational bottlenecks and risks include:
+
+- Manual triage
+  - 40% routing errors create reassignment loops
+  - High dependency on staff experience
+  - Delays caused by queue balancing
+
+- Fragmented evidence gathering
+  - Investigators switch across systems
+  - Missing data leads to repeated follow-ups
+  - Long turnaround for call/audio retrieval
+
+- Manual investigation
+  - No standardized decision automation
+  - Repetitive low-complexity complaints consume analyst time
+
+- Policy interpretation variability
+  - Different investigators may interpret rules differently
+  - Inconsistent customer outcomes
+
+- Response drafting
+  - Manual writing and approvals slow resolution
+  - High quality-control effort
+
+- Operational scale issue
+  - 50,000 complaints/month creates backlog spikes
+  - Average 7–10 day resolution time increases regulatory and reputational risk
+
+3. To-Be Process
+
+Target state should combine workflow orchestration, AI-assisted classification, business rules, and straight-through processing (STP) for eligible cases.
+
+Proposed future-state flow:
+
+1. Omnichannel complaint intake
+   - Structured digital capture
+   - NLP extraction of complaint intent, account references, urgency
+
+2. Intelligent triage
+   - AI/ML classification engine routes complaints automatically
+   - Priority scoring based on risk, sentiment, regulatory exposure, vulnerable customer indicators
+
+3. Automated evidence retrieval
+   - API
+
+3. Automated evidence retrieval
+   - API-based collection from CRM, core banking, payments, collections, fraud, and telephony systems
+   - Prebuilt investigation packs generated automatically
+
+4. Rules and policy engine
+   - Complaint mapped to policy rules and known resolution patterns
+   - Eligibility checks for automated resolution
+
+5. STP path or assisted investigation
+   - Low-risk/high-volume complaints resolved automatically
+   - Complex cases routed to specialist investigators
+
+6. AI-assisted response generation to specialist investigators
+
+6. AI-assisted response generation
+   - Response drafts generated from approved templates and case facts
+   - Compliance validation checks applied automatically
+
+7. Automated closure and reporting
+   - Customer notified digitally
+   - Audit trail, regulator reporting, root-cause tagging updated automatically
+
+4. STP Criteria
+
+Complaints suitable for straight-through processing should meet predefined business and compliance rules such as:
+
+- Complaint type is low complexity
+  - Fee disputes
+  - Duplicate charges
+  - Minor service delays
+  - ATM cash dispute below threshold
+
+- Sufficient structured data available
+  - Customer identity verified
+  - Transaction references present
+  - Required evidence accessible automatically
+
+- Clear policy outcome exists
+  - Rule-based determination possible
+  - No subjective investigation required
+
+- Low financial and regulatory risk
+  - Compensation below threshold
+  - No fraud indicators
+  - No vulnerable customer escalation
+  - No legal threat or regulator
+
+- High confidence AI classification
+  - Confidence score exceeds threshold
+  - No conflicting indicators detected
+
+- No prior unresolved linked complaint
+  - Avoid duplicate or related-case conflicts
+
+5. Retry, Timeout and Fallback
+
+A resilient complaints workflow should include operational controls for automation failures.
+
+Retry Logic
+- Retry API calls for upstream banking systems
+- Exponential backoff for temporary failures
+- Retry document extraction/OCR when confidence is low
+- Requeue failed jobs automatically
+
+ is low
+- Requeue failed jobs automatically
+
+Timeout Handling
+- Evidence retrieval timeout thresholds
+- Escalate if dependency systems unavailable beyond SLA
+- Auto-notify operations team for stalled cases
+- Trigger manual intervention after defined wait period
+
+Fallback Mechanisms- AI confidence below threshold → human review
+- Missing customer data → exception queue
+- Policy engine ambiguity → compliance escalation
+- System integration failure → manual workflow continuation
+- Response generation validation failure → supervisor workflow continuation
+- Response generation validation failure → supervisor approval path
+
+Audit and Monitoring
+- Full logging of automated decisions
+- Exception dashboards
+- SLA tracking and breach alerts
+- Human override capability
+
+6. Benefits
+
+Expected operational and business benefits include:
+
+- Reduced resolution time
+  - Potential reduction from 7–10 days to same-day or 24–48 hour resolution for standard complaints
+
+- Lower routing errors
+  - AI-driven classification can significantly reduce the current 40% misrouting rate
+
+- Increased STP rate
+  - High-volume low-complexity complaints resolved automatically
+
+- Improved investigator productivity
+  - Staff focus on complex and high-risk cases
+
+- Better regulatory compliance
+  - Standardized policy application
+  - Improved auditability and traceability
+
+- Improved customer experience
+  - Faster responses
+  - Consistent communication
+  - Better transparency
+
+- Operational cost reduction
+  - Fewer manual touches
+  - Lower rework volumes
+  - Reduced backlog costs
+
+- Better analytics
+  - Root-cause trend analysis
+  - Product/service issue identification
+  - Complaint hotspot monitoring

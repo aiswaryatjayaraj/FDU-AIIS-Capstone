@@ -1,0 +1,11 @@
+Prompt 1:
+Generate a complaint management dashboard.
+
+Prompt 2:
+Generate PostgreSQL schema for complaints database.
+
+Prompt 3:
+Create a Triage Agent JSON schema.
+
+Prompt 4:
+Build a Next.js Monitoring Workbench.

@@ -1,0 +1,235 @@
+=================================================
+LIVE COMPLAINT DEMO - SCENARIO 1
+UNAUTHORIZED TRANSACTION CASE
+=================================================
+
+CUSTOMER COMPLAINT
+
+I found a £500 card transaction that I did not authorize.
+
+------------------------------------------------
+
+TRIAGE AGENT
+
+Input:
+
+I found a £500 card transaction that I did not authorize.
+
+Output:
+
+{
+  "complaint_type": "Unauthorized Transaction",
+  "priority": "P1",
+  "vulnerable": false,
+  "confidence": 95
+}
+
+Action:
+
+Complaint classified and routed to Evidence Agent.
+
+------------------------------------------------
+
+EVIDENCE AGENT
+
+Input:
+
+Unauthorized Transaction
+
+Output:
+
+{
+  "transaction_found": true,
+  "transaction_amount": 500,
+  "transaction_date": "2026-10-01",
+  "customer_history": "No prior disputes"
+}
+
+Action:
+
+Evidence package generated.
+
+------------------------------------------------
+
+POLICY AGENT
+
+Input:
+
+Evidence Package
+
+Output:
+
+{
+  "rule": "FCA DISP 1.6",
+  "liability": "Bank",
+  "redress": 500,
+  "decision": "Uphold"
+}
+
+Action:
+
+Compensation recommendation prepared.
+
+------------------------------------------------
+
+DRAFT AGENT
+
+Input:
+
+Policy Recommendation
+
+Output:
+
+{
+  "status": "Ready",
+  "decision": "Uphold",
+  "response": "We have investigated your complaint and approved a refund of £500."
+}
+
+Action:
+
+Customer response generated.
+
+------------------------------------------------
+
+FINAL STATUS
+
+Complaint Approved
+
+Redress Amount: £500
+
+Response Sent To Customer
+
+Straight Through Processing = SUCCESS
+
+=================================================
+LIVE COMPLAINT DEMO - SCENARIO 2
+VULNERABLE CUSTOMER CASE
+=================================================
+
+CUSTOMER COMPLAINT
+
+I am elderly and unable to access my pension funds.
+
+------------------------------------------------
+
+TRIAGE AGENT
+
+Input:
+
+I am elderly and unable to access my pension funds.
+
+Output:
+
+{
+  "complaint_type": "Account Access",
+  "priority": "P1",
+  "vulnerable": true,
+  "confidence": 92
+}
+
+Action:
+
+Vulnerability detected.
+
+------------------------------------------------
+
+EVIDENCE AGENT
+
+Input:
+
+Account Access Complaint
+
+Output:
+
+{
+  "account_found": true,
+  "pension_account": true,
+  "customer_history": "Flagged as Vulnerable Customer"
+}
+
+Action:
+
+Evidence package collected.
+
+------------------------------------------------
+
+POLICY AGENT
+
+Input:
+
+Evidence Package
+
+Output:
+
+{
+  "rule": "Consumer Duty",
+  "decision": "Human Review Required",
+  "redress": "Pending Review"
+}
+
+Action:
+
+Human review required due to customer vulnerability.
+
+------------------------------------------------
+
+HUMAN IN THE LOOP (HITL)
+
+Input:
+
+Vulnerable Customer Case
+
+Output:
+
+{
+  "review_required": true,
+  "reason": "Vulnerable Customer",
+  "assigned_team": "Customer Care Specialist"
+}
+
+Action:
+
+Case escalated to specialist team.
+
+------------------------------------------------
+
+FINAL STATUS
+
+Straight Through Processing = REJECTED
+
+Human Review Triggered = YES
+
+Escalated To Specialist Team
+
+=================================================
+AGENT EXECUTION FLOW
+=================================================
+
+Customer Complaint
+      ↓
+Triage Agent
+      ↓
+Evidence Agent
+      ↓
+Policy Agent
+      ↓
+Draft Agent
+      ↓
+Customer Response
+
+For Vulnerable Customers
+
+Customer Complaint
+      ↓
+Triage Agent
+      ↓
+Evidence Agent
+      ↓
+Policy Agent
+      ↓
+Human Review (HITL)
+      ↓
+Specialist Team
+      ↓
+Customer Response

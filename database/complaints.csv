@@ -1,0 +1,6 @@
+id,name,type,priority,status,redress,vulnerable
+1,John Smith,Unauthorized Transaction,P1,Open,500,No
+2,David Lee,ATM Failure,P2,Open,100,No
+3,Mary Wilson,Mortgage Issue,P1,Review,300,Yes
+4,Peter James,Duplicate Charges,P2,Open,200,No
+5,Sarah Brown,Privacy Concern,P1,Escalated,400,Yes

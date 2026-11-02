@@ -1,0 +1,396 @@
+Retail Bank Complaints Management — Monitoring Workbench Design
+
+Overview
+
+The Monitoring Workbench is a centralized operational and governance console for AI-assisted complaints handling. It provides real-time visibility into complaint volumes, agent performance, operational risk, regulatory exposure, and human escalation workflows.
+
+Primary Users:
+- Complaints Operations Managers
+- QA and Compliance Teams
+- Vulnerable Specialists
+- Risk and Audit Teams
+- Team Leaders
+- AI Operations (MLOps) Teams
+
+Workbench Layout
+
+Top Navigation:
+- Dashboard
+- Complaint Queue
+- Agent Monitor
+- Review
+- Vulnerability Oversight
+- Audit & Compliance
+- Reporting & Analytics
+- Configuration/Admin
+
+Global Filters:
+- Date range
+- Product
+- Complaint type
+- Region
+- Priority
+- Vulnerability status
+- Queue/team
+- AI confidence range
+- Escation status
+
+1. Dashboard KPIs
+
+Executive KPI
+
+Operational KPIs:
+- Total complaints received today/month
+ KPIs:
+- Total complaints received today/month
+- Open complaints
+- Complaints resolved
+- Average resolution time
+- SLA breach %
+- Straight-through processing (STP) %
+- First-touch resolution %
+- Routing accuracy %
+- Human review rate %
+
+Risk & Compliance KPIs:
+- Vulnerable customers identified
+- Missed vulnerability alerts
+- Ombudsman escalation rate
+- Policy deviation count
+- Regulatory breach risk cases
+- Audit exceptions
+
+AI Agent KPIs:
+- Triage confidence average
+- Evidence completeness rate
+- Policy recommendation accuracy
+- Evidence completeness rate
+- Policy recommendation accuracy
+- Draft approval rate
+- Agent failure count
+- Low-confidence decision volume
+
+Customer Experience KPIs:
+- Customer satisfaction score (if available)
+- Repeat complaint rate
+- Complaint reopen rate
+- Average response
+- Negative sentiment trend
+
+Visual Components
+
+1. Complaint Volume Trend
+   - Daily/weekly/monthly inflow
+   - Seg by product and complaint category
+
+2. SLA Heatmap
+   - Teams vs aging complaints
+   -
+   - Teams vs aging complaints
+   - Red/amber/green compliance status
+
+3. Complaint Funnel
+   - Received
+   - Triaged
+   - Evidence collected
+   - Under review
+   - Resolved
+   - Reopened
+
+4. Vulnerability Risk Widget
+   - Total vulnerable cases
+   - High-risk vulnerable queues
+   - Missed identification alerts
+
+5. STP Performance Chart
+   - Fully automated resolution %
+   - Human intervention %
+   - Failed automation %
+
+6. Escalation Monitor
+   - Ombudsman escalations
+   - Legal escalations
+   - Executive complaints
+
+Alert Banner
+
+Real-time alerts:
+- SLA threshold exceeded
+- Core system outage impacting Evidence Agent
+- Spike in complaints for a product
+- Agent confidence degradation
+- Vulnerability detection failure risk
+
+2. Complaint Table
+
+Purpose
+
+Operational work queue and case investigation interface.
+
+Core Table Columns
+
+- Case ID
+- Customer ID
+- Complaint category
+- Product
+- Priority
+- Current stage
+- Assigned team/user
+- Vulnerability flag
+- AI confidence score
+- STP eligible- SLA countdown
+- Date received
+- Last action
+- Escalation status
+
+Status Indicators
+
+
+- Escalation status
+
+Status Indicators
+
+Visual tags:
+- Red = SLA risk
+- Amber = awaiting input
+- Green = progressing normally
+- Purple = vulnerable customer
+- Blue = human review required
+
+Filtering & Search
+
+Filters:
+- Product
+- Complaint type
+- SLA risk
+- AI confidence
+- Vulnerability
+- Complaint amount
+- Queue
+- Resolution recommendation
+- Region/channel
+
+Search:
+- Case ID
+- Customer name
+- Account number
+- Keywords in complaint text
+
+Complaint Detail Drawer
+
+When a case is selected:
+
+Sections:
+- Complaint summary
+- Customer profile
+- Timeline of events
+- Agent decisions
+- Retrieved evidence
+- Policy references
+- Draft response preview
+- Audit history
+- Draft response preview
+- Audit history
+- Human actions log
+
+Actions Available:
+- Approve draft
+- Request additional evidence
+- Reassign case
+- Override recommendation
+- Escalate to specialist
+- Add internal notes
+
+3. Agent Monitor
+
+Purpose
+
+Provides observability into AI agent health, quality, throughput, and decision behavior.
+
+Agent Overview Panel
+
+Agents:
+- Triage Agent
+- Evidence Agent
+- Policy
+- Draft Agent
+
+For each agent display:
+- Status (healthy/degraded/offline)
+- Requests processed
+- Average response time
+- Confidence average
+- Error rate
+- Retry count
+- Timeout count
+- Fallback activation rate
+- Human override %
+- Throughput per hour
+
+Detailed Metrics by Agent
+
+Triage Agent
+- Routing accuracy
+- Misclassification rate
+- Vulnerability detection precision/recall
+- Duplicate detection rate
+
+Evidence Agent
+- Data retrieval success %
+- Missing rate
+- Average retrieval latency
+- Failed system integrations
+- Partial evidence latency
+- Failed system integrations
+- Partial evidence pack frequency
+
+Policy Agent
+- Recommendation acceptance %
+- Policy match confidence
+- Escalation frequency
+- Regulatory conflict detection count
+
+Draft Agent
+- Draft approval rate
+- Mandatory disclosure omission count
+- Manual frequency
+- Toxicity/compliance screening failures
+
+Agent Decision Trace
+
+Per case:
+- Input received
+- Prompt/workflow version
+- reasoning summary
+- Confidence score
+- Tools/systems accessed
+- Output score
+- Tools/systems accessed
+- Output generated
+- Human modifications
+
+Operational Controls
+
+Authorized users can:
+- Pause agent
+- Roll back prompt/model version
+- Reroute workloads
+- Trigger retraining review
+- Activate degraded-mode processing
+
+4. Human The Loop (HITL) Panel
+
+Purpose
+
+ workspace for human oversight, intervention, escalation management, and QA review.
+
+Cases Requiring Human Review
+
+Reasons:
+- Low AI confidence
+- Vulnerable customer detected
+- Policy ambiguity
+- High compensation amount
+- Legal threat detected
+- Ombudsman escalation risk
+ Evidence conflict
+- Missing mandatory disclosures
+
+Review Queue Columns
+
+- Case ID
+- Escalation reason
+- AI recommendation
+- Confidence score
+- Waiting time
+- Assigned reviewer
+- Priority
+- Vulnerability level
+
+Reviewer Workspace
+
+Displays:
+- Original complaint
+- Structured AI findings
+- Evidence
+- Policy rationale
+- Generated response draft
+- Full audit log
+- Prior reviewer decisions
+
+Reviewer Actions
+
+- Approve AI recommendation
+- Modify outcome
+- Edit response draft
+- Request more evidence
+- Escalate to legal/compliance
+- Override routing
+- Reject AI recommendation entirely
+
+Override Capture
+
+Mandatory fields:
+- Override reason
+- Risk category
+- Reviewer comments
+- Compliance impact
+
+Used for:
+- Audit
+- Model improvement
+- Root-cause analysis
+
+Vulnerable Customer Oversight
+
+Specialized view:
+- Vulnerability indicators
+- Safeguarding actions
+- Specialist referrals
+- Priority handling status
+- Communication preferences
+- Financial hardship markers
+
+Quality Assurance Panel
+
+QA reviewers can hardship markers
+
+Quality Assurance Panel
+
+QA reviewers can:
+- Sample closed cases
+- Compare AI vs human decisions
+- Measure consistency
+- Detect policy drift
+- Flag training issues
+
+Workbench Governance Features
+
+Audit & Compliance
+- Immutable activity logging
+- Full decision traceability
+- Agent version history
+- Regulatory reporting export
+
+Security Controls
+- RBAC access
+- PII masking
+- Dual authorization for overrides
+- Session monitoring
+
+Analytics & Continuous Improvement
+- Root-cause trend analysis
+- Complaint clustering
+- Agent learning feedback loops
+- Process bottleneck analytics
+- False positive/negative tracking
+
+Target Business Outcomes
+
+- Reduced complaint resolution time
+- Higher STP rates
+- Fewer SLA breaches
+- Better vulnerable customer protection
+- Reduced ombudsman escalations
+- Improved operational transparency
+- Stronger regulatory audit readiness

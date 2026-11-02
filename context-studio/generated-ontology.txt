@@ -1,0 +1,276 @@
+Below is a compact ontology for a Retail Bank Complaints Management System that connects business, IT, and regulatory concepts.
+
+1. Entities
+
+Business Domain
+
+- Customer
+  - Attributes:
+    - customerId
+    - fullName
+    - dateOfBirth
+    - customerSegment
+    - vulnerabilityStatus
+    - contactDetails
+
+- Complaint
+  - Attributes:
+    - complaintId
+    - complaintType
+    - complaintDate
+    complaintStatus
+    - severity
+    - channel
+ - resolutionDate
+
+- Product
+  - Attributes:
+    - productId
+    - productName
+    - productType
+    - brand
+
+- Department
+  - Attributes:
+    - department
+    - departmentName
+    - departmentHead
+
+- Redress
+  - Attributes:
+    - redressId
+    - redressType
+    - compensationAmount
+    - apologyIssued
+    - redressDate
+
+IT Domain
+
+- SalesforceCRM
+  - Attributes:
+    - instanceId
+    - caseReference
+    - integrationStatus
+
+- TemenosT24
+  - Attributes:
+    - accountId
+    - transactionReference
+    - coreId
+    - transactionReference
+    - coreBankingStatus
+
+- ComplaintManagementSystem
+  - Attributes:
+    - systemId
+    - workflowState
+    - escalationFlag
+
+Regulatory Domain
+
+- FCARules
+  - Attributes:
+    - ruleId
+    - ruleName    - complianceRequirement
+
+- ConsumerDuty
+  - Attributes:
+    - dutyId
+    - outcomeType
+    - fairValueIndicator
+
+- VulnerabilityPolicy
+  - Attributes:
+    - policyId
+    - vulnerabilityCategory
+    - supportRequirement
+
+2. Relationships
+
+Business Relationships
+
+- Customer
+
+2. Relationships
+
+Business Relationships
+
+- Customer submits Complaint
+- Complaint relatesTo Product
+-
+
+2. Relationships
+
+Business Relationships
+
+- Customer submits Complaint
+- Complaint relatesTo Product
+- Complaint handledBy Department
+- Complaint resolvedBy Redress
+- Customer owns Product
+
+IT Relationships
+
+- Complaint recordedIn SalesforceCRM
+- Complaint processedIn ComplaintManagementSystem
+- Customer accountManagedIn TemenosT24
+- SalesforceCRM exchangesDataWith TemenosT24
+- ComplaintManagementSystem integrates SalesforceCRM
+
+Regulatory Relationships
+
+- Complaint governedBy FCARules
+- Complaint assessedAgainst ConsumerDuty
+- Customer protectedBy VulnerabilityPolicy
+ VulnerabilityPolicy influences Redress
+- Department compliesWith FCARules
+
+Cross-Domain Relationships
+
+- Complaint triggers RegulatoryAssessment
+- ComplaintManagementSystem stores Complaint
+- SalesforceCRM tracks CustomerInteractions
+- TemenosT24 provides AccountContext for Complaint
+
+3. Sample Ontology
+
+```ttl
+@prefix ex: <http://example.com/bank-complaints#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+ex:Customer rdf:type owl:Class .
+ex:Complaint rdf rdf:type owl:Class .
+ex:Complaint rdf:type owl:Class .
+ex:Product rdf:type owl:Class .
+ex:Department rdf:type owl:Class .
+ex:Redress rdf:type owl:Class .
+
+ex:SalesforceCRM rdf:type owl:Class .
+ex:TemenosT24 rdf:type owl:Class .
+ex:ComplaintManagementSystem rdf:type owl:Class .
+
+ex:FCARules rdf owl:Class .
+ex:ConsumerDuty rdf:type owl:Class .
+ex:VulnerabilityPolicy rdf:type owl:Class .
+
+:submitsComplaint rdf:type owl:ObjectProperty ;
+   dfs:domain ex:Customer ;
+    rdfs:rangedomain ex:Customer ;
+    rdfs:range ex:Complaint .
+
+ex:relatesToProduct rdf:type owl:ObjectProperty ;
+    rdfs:domain rdfs:domain ex:Complaint ;
+    rdfs:range ex:Product .
+
+ex:handledBy rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:Complaint ;
+    rdfs:range ex:Department .
+
+ex:resolvedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:Complaint ;
+    rdfs:range ex:Redress .
+
+ex:goedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:Complaint ;
+    rdfs:range ex:FCARules .
+
+ex:assessedAgainst rdf:type owl:ObjectProperty ;
+    rdfs:domain ex:Complaint ;
+    rdfs:range ex:ConsumerDuty .
+```
+
+4. JSON Representation
+
+```json
+{
+  "ontology": {
+    "businessDomain": {
+      "entities": [
+        "businessDomain": {
+      "entities": [
+        "Customer",
+        "Complaint",
+        "Product",
+        "Department",
+        "Redress"
+      ],
+      "relationships": [
+        {
+          "source": "Customer",
+ "relationship": "submits",
+          "target": "Complaint"
+        },
+        {
+          "source": "Complaint",
+          "relationship": "relates",
+          "target": "Product"
+        },
+        {
+          "source": "Complaint",
+ },
+        {
+          "source": "Complaint",
+          "relationship": "handledBy",
+          "target": "Department"
+        },
+        {
+          "source": "Complaint",
+          "relationship": "resolvedBy",
+          "target": "Redress"
+        }
+         },
+    "itDomain": {
+      "entities": [
+        "SalesforceCRM",
+        "TemenosT24",
+        "ComplaintManagementSystem"
+      ],
+     relationships": [
+        {
+          "source": "Complaint",
+          "relationship": "recordedIn",
+          "target": "SalesforceCRM"
+        },
+                 "source": "Complaint",
+          "relationship": "processedIn",
+          "target": "processedIn",
+          "target": "ComplaintManagementSystem"
+        },
+        {
+          "source": "ComplaintManagementSystem"
+        },
+        {
+          "source": "TemenosT24",
+          "relationship": "sharesDataWith",
+          "target": "SalesforceCRM"
+        }
+      ]
+    },
+    "regDomain": {
+      "entities": [
+        "FCules",
+        "ConsumerDuty",
+        "VulnerabilityPolicy"
+      ],
+      "relationships": [
+        {
+          "source": "",
+          "relationship": "governedBy",
+          "target": "FCARules"
+        },
+        {
+          "source": "Complaint",
+          "relationship": "assessedAgainst",
+          "target": "ConsumerDuty"
+        },
+        {
+          "source": "Customer",
+          "relationship": "protected",
+          "target": "VulnerabilityPolicy"
+        }
+      ]
+    }
+  }
+}
+```

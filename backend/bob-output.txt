@@ -1,0 +1,53 @@
+PROMPT 1
+
+Generate a complaint management dashboard.
+
+OUTPUT
+
+Dashboard generated with:
+- KPI widgets
+- Complaint table
+- Agent monitor
+- Human review panel
+
+------------------------------------------------
+
+PROMPT 2
+
+Generate PostgreSQL schema.
+
+OUTPUT
+
+Tables Generated:
+- Complaints
+- Customers
+- Redress
+
+------------------------------------------------
+
+PROMPT 3
+
+Generate Triage Agent JSON Schema.
+
+OUTPUT
+
+{
+  "complaint_type":"",
+  "priority":"",
+  "vulnerable":"",
+  "confidence":""
+}
+
+------------------------------------------------
+
+PROMPT 4
+
+Generate agent orchestration workflow.
+
+OUTPUT
+
+Triage Agent
+→ Evidence Agent
+→ Policy Agent
+→ Draft Agent
+→ Human Review

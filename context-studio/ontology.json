@@ -1,0 +1,33 @@
+{
+  "entities": [
+    "Customer",
+    "Complaint",
+    "Product",
+    "Department",
+    "FCA_Rule",
+    "Vulnerability",
+    "Redress"
+  ],
+  "relationships": [
+    {
+      "from": "Customer",
+      "relation": "submits",
+      "to": "Complaint"
+    },
+    {
+      "from": "Complaint",
+      "relation": "governed_by",
+      "to": "FCA_Rule"
+    },
+    {
+      "from": "Customer",
+      "relation": "identified_as",
+      "to": "Vulnerability"
+    },
+    {
+      "from": "Complaint",
+      "relation": "results_in",
+      "to": "Redress"
+    }
+  ]
+}

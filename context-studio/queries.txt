@@ -1,0 +1,11 @@
+Query 1:
+What FCA regulations apply to vulnerable customers?
+
+Query 2:
+What redress amount applies to unauthorized transactions?
+
+Query 3:
+Show relationships between complaints, customers and FCA rules.
+
+Query 4:
+Which systems support complaint evidence gathering and regulatory compliance?
